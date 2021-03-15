@@ -1,8 +1,6 @@
 let diceRollBtn = document.querySelector(".dice-roll-btn");
 let diceImage = document.querySelector('.dice-image');
-
 let numberHeading = document.querySelector(".number-heading");
-
 let diceRollSound;
 
 
@@ -11,7 +9,6 @@ function randomNumberGenerator() {
     /*generates a random number between 1 & 6*/
     return Math.floor(Math.random() * 6 + 1);
 }
-
 
 
 
@@ -40,7 +37,6 @@ showDice();
 
 
 
-
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -57,12 +53,3 @@ function sound(src) {
         this.sound.pause();
     }
 }
-
-
-
-
-
-/*
-- add sound effect (on click of the dice btn) [done]
-- transition animation (dice image)
-*/
