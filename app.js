@@ -1,32 +1,68 @@
-/*Steps
-1. generate a random number(between 1 & 6)
-
-2. based upon the random number generator
-show the corresponding dice img
-- do this by adding the
-.show-die class to .dice__item class
-*/
-
 let diceRollBtn = document.querySelector(".dice-roll-btn");
-let dices = document.querySelector(".dices");
+let diceImage = document.querySelector('.dice-image');
 
-function generateRandomNumber() {
-    let randomNum = Math.floor(Math.random() * 6 + 1);
-    return randomNum;
+let numberHeading = document.querySelector(".number-heading");
+
+let diceRollSound;
+
+
+
+function randomNumberGenerator() {
+    /*generates a random number between 1 & 6*/
+    return Math.floor(Math.random() * 6 + 1);
 }
 
-// if( generateRandomNumber() === 1) {
-//     console.log("one")
-// } else if( generateRandomNumber() === 2) {
-//     console.log("two")
-// } else if( generateRandomNumber() === 3) {
-//     console.log("three")
-// } else if( generateRandomNumber() === 4) {
-//     console.log("four")
-// } else if( generateRandomNumber() === 5) {
-//     console.log("five")
-// } else if( generateRandomNumber() === 6) {
-//     console.log("six")
-// } else {
-//     console.log(generateRandomNumber())
-// }
+
+
+
+function showDice() {
+    diceRollBtn.addEventListener("click", function() {
+        let randomNumber = randomNumberGenerator();
+        diceImage.src = `images/dice${randomNumber}.png`;
+
+        // update number count
+        numberHeading.innerHTML = `You got ${randomNumber}`;
+
+        // play dice roll sound
+        diceRollSound = new sound("./sound-effects/roll-dice-sound.mp3");
+        diceRollSound.play();
+
+        // play animation
+        diceImage.style.transform = `rotate(360deg)`;
+        setTimeout(function() {
+            diceImage.style.removeProperty("transform");
+        }, 50);
+    })
+}
+
+
+showDice();
+
+
+
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+
+    document.body.appendChild(this.sound);
+    this.play = function() {
+        this.sound.play();
+    }
+
+    this.stop = function() {
+        this.sound.pause();
+    }
+}
+
+
+
+
+
+/*
+- add sound effect (on click of the dice btn) [done]
+- transition animation (dice image)
+*/

@@ -51,19 +51,46 @@ body {
 }
 
 
-.dices {
-    position: relative;
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
+/*dice image animation*/
+
+@keyframes diceTransitionAnimation {
+    0% {
+        transform:rotate(0deg);
+    }
+
+    100% {
+        transform:rotate(360deg);
+    }
 }
 
-.dices__item {
-    display:none;
-}
-
-
-.show-die {
+.dice-image {
+    margin:0 auto;
     display:block;
+
+    /* animation-name:diceTransitionAnimation;
+    animation-duration: 0.75s;
+    animation-delay:2s;
+    animation-iteration-count: infinite;
+    animation-timing-function:ease;
+    /* animation-play-state: play; */
+    /* animation-play-state: paused; */
+
+    transition: all ease 0.3s;
 }
+
+
+/* .play-animation {
+    animation-play-state: play;
+} */
+
+
+.number-heading {
+    text-align:center;
+    font-size:22px;
+    color:#fff;
+    letter-spacing: 1.5px;
+    margin-top:3rem;
+}
+
+
+
